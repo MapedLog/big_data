@@ -6,17 +6,6 @@ This is also the code for the [Realtime Predictive Analytics](http://datasyndrom
 
 Have problems? Please file an issue!
 
-
-## Downloading Data
-
-To start using the tool, you just have to clone this repository
-```
-cd ~
-git clone https://github.com/MapedLog/big_data.git
-mv big_data/bdfi_container_init.sh ~/
-sh ./bdfi_container_init.sh
-```
-
 ## Installation
 
 The docker used in this project have the next requirements of Software
@@ -31,33 +20,28 @@ The following list includes in which image is installed and if it is needed in h
  - Zookeeper 3.6.2 : included in "zookeeper:3.6.2" docker image
  - Kafka  2.12-2.3.0 : included in "wurstmeister/kafka:2.12-2.3.0" docker image
  
- ### Install python libraries
- 
- ```
-  pip3 install -r requirements.txt
- ```
+## Initial steps
 
+To start using the tool, you just have to clone this repository and execute the "bdfi_container_init.sh" script. This will start all the containers needed for the project
+```
+cd ~
+git clone https://github.com/MapedLog/big_data.git
+mv big_data/bdfi_container_init.sh ~/
+sh ./bdfi_container_init.sh
+```
 
-  
-  Next command can be skipped, because it has benn done previously. Now, execute the script `train_spark_mllib_model.py`
-  
-  ```
-   cd ~/big_data
-   python3.7 resources/train_spark_mllib_model.py .
-  ```
-  Warning: To run this command and don't have error at the execution you should have installed all the python libraries required at the requirements.txt
-  ```
-  pip3 install requirements.txt
-  ```
-  As result, some files will be saved in the `models` folder 
-  
-  ```
-   ls ../models
-  
-  ```   
   ## Run Flight Predictor
   
+  This point can be done by executing the following script:
+  
+  ```
+  cd ~
+  mv big_data/bdfi_post_installer.sh ~/
+  sh ./bdfi_post_installer.sh
+ 
+ ```
     Run the import_distances.sh script
+    
   ```
   ./resources/import_distances.sh
   ```
