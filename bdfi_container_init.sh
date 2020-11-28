@@ -17,7 +17,6 @@ export PROJECT_HOME=~/big_data
 #source /home/euskart/.profile
 
 ############################################# DATA DOWNLOAD ##########################################
-
 if [ -d "~/big_data/data" ]; then
     echo "Data directory already exists"
 else
@@ -30,7 +29,7 @@ if [[ -f "~/big_data/data/simple_flight_delay_features.jsonl.bz2" && -f "~/big_d
 else
     echo "Downloading Data"   
     cd ~/big_data
-    sh ./resources/download_data.sh 
+    sh resources/download_data.sh 
     cd ~
 fi
 trained=$(ls -la ~/big_data/models | grep -e ".*.bin" | wc -l)
@@ -39,7 +38,7 @@ if [  $trained == 7]; then
 else
     echo "Training model"
     cd ~/big_data
-    pip3 install requirements.txt   
+    pip3 install ~/big_data/requirements.txt   
     python3.7 resources/train_spark_mllib_model.py .
     cd ~
 fi
