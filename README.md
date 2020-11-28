@@ -13,11 +13,8 @@ To start using the tool, you just have to clone this repository
 ```
 cd ~
 git clone https://github.com/MapedLog/big_data.git
-```
-mv big_data/bdfi_container_init.sh
-```
-```
-cd practica_big_data_2019
+mv big_data/bdfi_container_init.sh ~/
+sh ./bdfi_container_init.sh
 ```
 
 ## Installation
