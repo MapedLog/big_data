@@ -19,17 +19,17 @@ sh ./bdfi_container_init.sh
 
 ## Installation
 
-You need to install each component included in the architecture. 
-The following list includes some links with the installation procedure for each component:
+The docker used in this project have the next requirements of Software
+The following list includes in which image is installed and if it is needed in host machine:
 
- - Java 1.8 JDK
- - Python 3.7
- - PIP 3
- - SBT
- - MongoDB
- - Spark 2.4.4
- - Zookeeper
- - Kafka  2.12-2.3.0
+ - Java 1.8 JDK : included in "bde2020/spark-submit:2.4.4-hadoop2.7", "bde2020/spark-master:2.4.4-hadoop2.7", "bde2020/spark-worker:2.4.4-hadoop2.7" docker images
+ - Python 3.7 : included in "python:3.7" docker image
+ - PIP 3 : included in "python:3.7" docker image
+ - SBT : needed in host machine
+ - MongoDB : included in "mongo" docker image
+ - Spark 2.4.4 : included in "bde2020/spark-submit:2.4.4-hadoop2.7", "bde2020/spark-master:2.4.4-hadoop2.7", "bde2020/spark-worker:2.4.4-hadoop2.7" docker images
+ - Zookeeper 3.6.2 : included in "zookeeper:3.6.2" docker image
+ - Kafka  2.12-2.3.0 : included in "wurstmeister/kafka:2.12-2.3.0" docker image
  
  ### Install python libraries
  
@@ -37,7 +37,27 @@ The following list includes some links with the installation procedure for each 
   pip3 install -r requirements.txt
  ```
 
-  Run the import_distances.sh script
+
+  
+  Next command can be skipped, because it has benn done previously. Now, execute the script `train_spark_mllib_model.py`
+  
+  ```
+   cd ~/big_data
+   python3.7 resources/train_spark_mllib_model.py .
+  ```
+  Warning: To run this command and don't have error at the execution you should have installed all the python libraries required at the requirements.txt
+  ```
+  pip3 install requirements.txt
+  ```
+  As result, some files will be saved in the `models` folder 
+  
+  ```
+   ls ../models
+  
+  ```   
+  ## Run Flight Predictor
+  
+    Run the import_distances.sh script
   ```
   ./resources/import_distances.sh
   ```
@@ -58,24 +78,22 @@ The following list includes some links with the installation procedure for each 
   
   ```
   
-  Next command can be skipped, because it has benn done previously. Now, execute the script `train_spark_mllib_model.py`
+  Open a new console and check if topic has already been created.
   
   ```
-   cd ~/big_data
-   python3.7 resources/train_spark_mllib_model.py .
+  docker exec kafka opt/kafka/bin/kafka-topics.sh --list --zookeeper 172.23.0.6:2181
   ```
-  Warning: To run this command and don't have error at the execution you should have installed all the python libraries required at the requirements.txt
+  If a topic called "flight_delay_classification_request" is listed, then you don't have to run the following command:
   ```
-  pip3 install requirements.txt
+  docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --zookeeper 172.23.0.6:2181 --replication-factor 1 --partitions 1 --topic flight_delay_classification_request
   ```
-  As result, some files will be saved in the `models` folder 
-  
+  (Optional) You can oen a new console with a consumer in order to see the messeges sent to that topic
   ```
-   ls ../models
-  
-  ```   
-  ## Run Flight Predictor
+ docker exec kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 172.23.0.2:9092 --topic flight_delay_classification_request --from-beginning
+  ```
+ 
   This project is enabled to run spark-submit with the JAR generated with SBT.
+   Open a new console
   ```
   docker exec spark-submit spark-submit --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 flight_prediction_2.11-0.1.jar
   ```
@@ -85,6 +103,7 @@ The following list includes some links with the installation procedure for each 
   Quickly switch windows to your Spark console. Within 10 seconds, the length we’ve configured of a minibatch, you should see something like the following:
   
   ## Check the predictions records inserted in MongoDB
+  Open a new console
   ```
    $ mongo --host 127.0.0.1:27017
    > use use agile_data_science;
