@@ -66,12 +66,7 @@ The following list includes some links with the installation procedure for each 
   ```
   Warning: To run this command and don't have error at the execution you should have installed all the Software required at the Installation and export the next environment varibles:
   ```
-  export SPARK_HOME=/opt/spark
-  export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/spark/bin:/opt/spark/sbin:/opt/spark/python
-  export PYSPARK_PYTHON=/usr/bin/python3
-  export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-  export PROJECT_HOME=~/big_data
-  export PYTHONPATH=/opt/spark/python/lib/py4j-0.10.7-src.zip:/opt/spark/python
+  pip3 install requirements.txt
   ```
   As result, some files will be saved in the `models` folder 
   
