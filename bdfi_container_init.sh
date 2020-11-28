@@ -29,7 +29,7 @@ if [[ -f "~/big_data/data/simple_flight_delay_features.jsonl.bz2" && -f "~/big_d
 else
     echo "Downloading Data"   
     cd ~/big_data
-    sh resources/download_data.sh 
+    ./resources/download_data.sh 
     cd ~
 fi
 trained=$(ls -la ~/big_data/models | grep -e ".*.bin" | wc -l)
@@ -38,7 +38,7 @@ if [  $trained == 7]; then
 else
     echo "Training model"
     cd ~/big_data
-    pip3 install ~/big_data/requirements.txt   
+    pip3 install -r ~/big_data/requirements.txt   
     python3.7 resources/train_spark_mllib_model.py .
     cd ~
 fi
