@@ -70,7 +70,7 @@ services:
       bdfi_network:
         ipv4_address: 172.23.0.7    
     volumes:
-      - /home/euskart/big_data:/big_data
+      - ~/big_data:/big_data
   flask:
     container_name: flask
     image: flask:1.0
