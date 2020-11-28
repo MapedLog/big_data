@@ -69,7 +69,7 @@ The following list includes some links with the installation procedure for each 
    ls ../models
   
   ```   
-  ##Run Flight Predictor
+  ## Run Flight Predictor
   This project is enabled to run spark-submit with the JAR generated with SBT.
   ```
   docer exec spark-submit spark-submit --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 flight_prediction_2.11-0.1.jar
