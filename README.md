@@ -15,7 +15,7 @@ The following list includes in which image is installed and if it is needed in h
  - Python 3.7 : included in "python:3.7" docker image
  - PIP 3 : included in "python:3.7" docker image
  - SBT : needed in host machine
- - MongoDB : included in "mongo" docker image
+ - MongoDB : included in "mongo" docker image. It is also needed in host machine, so you can import files into MongoDB.
  - Spark 2.4.4 : included in "bde2020/spark-submit:2.4.4-hadoop2.7", "bde2020/spark-master:2.4.4-hadoop2.7", "bde2020/spark-worker:2.4.4-hadoop2.7" docker images
  - Zookeeper 3.6.2 : included in "zookeeper:3.6.2" docker image
  - Kafka  2.12-2.3.0 : included in "wurstmeister/kafka:2.12-2.3.0" docker image
