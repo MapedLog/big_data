@@ -17,13 +17,6 @@ export PROJECT_HOME=~/big_data
 #source /home/euskart/.profile
 
 ############################################# DATA DOWNLOAD ##########################################
-if [ -d "~/big_data"]; then 
-    echo "repository already cloned"
-else
-    echo "Downloading repository"
-    cd ~
-    git clone https://github.com/MapedLog/big_data.git
-fi
 
 if [ -d "~/big_data/data" ]; then
     echo "Data directory already exists"
