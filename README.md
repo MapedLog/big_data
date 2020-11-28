@@ -39,7 +39,7 @@ To start using the tool, you just have to clone this repository and execute the 
 cd ~
 git clone https://github.com/MapedLog/big_data.git
 mv big_data/bdfi_container_init.sh ~/
-sbdfi_container_init.sh
+bdfi_container_init.sh
 ```
 
   ## Run Flight Predictor
