@@ -32,7 +32,7 @@ sh ./bdfi_container_init.sh
 
   ## Run Flight Predictor
   
-  This point can be done by executing the following script:
+  From this point, it can be done by executing the following script:
   
   ```
   cd ~
@@ -40,7 +40,7 @@ sh ./bdfi_container_init.sh
   sh ./bdfi_post_installer.sh
  
  ```
-    Run the import_distances.sh script
+  ### Run the import_distances.sh script
     
   ```
   ./resources/import_distances.sh
@@ -62,7 +62,7 @@ sh ./bdfi_container_init.sh
   
   ```
   
-  Open a new console and check if topic has already been created.
+  ### Open a new console and check if topic has already been created.
   
   ```
   docker exec kafka opt/kafka/bin/kafka-topics.sh --list --zookeeper 172.23.0.6:2181
@@ -71,22 +71,23 @@ sh ./bdfi_container_init.sh
   ```
   docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --zookeeper 172.23.0.6:2181 --replication-factor 1 --partitions 1 --topic flight_delay_classification_request
   ```
-  (Optional) You can oen a new console with a consumer in order to see the messeges sent to that topic
+  (Optional) You can open a new console with a consumer in order to see the messeges sent to that topic
   ```
  docker exec kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 172.23.0.2:9092 --topic flight_delay_classification_request --from-beginning
   ```
  
-  This project is enabled to run spark-submit with the JAR generated with SBT.
+  ### This project is enabled to run spark-submit with the JAR generated with SBT.
    Open a new console
   ```
   docker exec spark-submit spark-submit --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 flight_prediction_2.11-0.1.jar
   ```
-
+  Here, the script's functionality endes.
+## Testing the full project
   Now, visit http://localhost:5000/flights/delays/predict_kafka and, for fun, open the JavaScript console. Enter a nonzero departure delay, an ISO-formatted date (I used 2016-12-25, which was in the future at the time I was writing this), a valid carrier code (use AA or DL if you don’t know one), an origin and destination (my favorite is ATL → SFO), and a valid flight number (e.g., 1519), and hit Submit. Watch the debug output in the JavaScript console as the client polls for data from the response endpoint at /flights/delays/predict/classify_realtime/response/.
   
   Quickly switch windows to your Spark console. Within 10 seconds, the length we’ve configured of a minibatch, you should see something like the following:
   
-  ## Check the predictions records inserted in MongoDB
+  ### Check the predictions records inserted in MongoDB
   Open a new console
   ```
    $ mongo --host 127.0.0.1:27017
