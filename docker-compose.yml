@@ -18,7 +18,7 @@ services:
       - '8080:8080'
       - '7077:7077'
     volumes:
-      - ~/big_data/flight_prediction/scala-2.11/flight_prediction_2.11-0.1.jar:flight_prediction_2.11-0.1.jar
+      - ~/big_data:/big_data
     environment:
       - 'INIT_DAEMON_STEP=setup_spark'
       - 'constraint:node==<yourmasternode>'
@@ -33,7 +33,7 @@ services:
     ports:
       - '8081:8081'
     volumes:
-      - ~/big_data/flight_prediction/scala-2.11/flight_prediction_2.11-0.1.jar:flight_prediction_2.11-0.1.jar
+      - ~/big_data:/big_data
     environment:
       - 'SPARK_MASTER=spark://spark-master:7077'
       - 'constraint:node==<yourworkernode>'
@@ -64,7 +64,7 @@ services:
     ports:
       - '4040:4040'
     volumes:
-      - ~/big_data/flight_prediction/scala-2.11/flight_prediction_2.11-0.1.jar:flight_prediction_2.11-0.1.jar
+      - ~/big_data:/big_data
     environment: 
       - 'SPARK_HOME=/spark'
       - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/spark/bin:/spark/sbin:/spark/python'
