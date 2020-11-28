@@ -50,7 +50,7 @@ bdfi_container_init.sh
   ```
   cd ~
   mv big_data/bdfi_post_installer.sh ~/
-  sh ./bdfi_post_installer.sh
+  bdfi_post_installer.sh
  
  ```
   ### Run the import_distances.sh script
