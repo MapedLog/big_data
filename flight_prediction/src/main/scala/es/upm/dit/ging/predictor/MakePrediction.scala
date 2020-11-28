@@ -139,7 +139,7 @@ object MakePrediction {
     finalPredictions.printSchema()
 
     // Define MongoUri for connection
-    val writeConfig = WriteConfig(Map("uri" -> "mongodb:///172.23.0.5:27017/agile_data_science.flight_delay_classification_response"))
+    val writeConfig = WriteConfig(Map("uri" -> "mongodb://172.23.0.5:27017/agile_data_science.flight_delay_classification_response"))
 
     // Store to Mongo each streaming batch
     val flightRecommendations = finalPredictions.writeStream.foreachBatch {
