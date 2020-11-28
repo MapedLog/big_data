@@ -45,6 +45,8 @@ fi
 
 #compile sbt
 if [ -f "~/big_data/flight_prediction/target/scala-2.11/flight_prediction_2.11-0.1.jar" ]; then
+    echo "JAR already exists"
+else
     cd ~/big_data/flight_prediction
     sbt compile
     sbt package
