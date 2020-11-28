@@ -17,6 +17,8 @@ services:
     ports:
       - '8080:8080'
       - '7077:7077'
+    volumes:
+      - ~/big_data:/big_data
     environment:
       - 'INIT_DAEMON_STEP=setup_spark'
       - 'constraint:node==<yourmasternode>'
@@ -68,9 +70,7 @@ services:
       - 'PROJECT_HOME=/big_data'
     networks:
       bdfi_network:
-        ipv4_address: 172.23.0.7    
-    volumes:
-      - ~/big_data:/big_data
+        ipv4_address: 172.23.0.7
   flask:
     container_name: flask
     image: flask:1.0

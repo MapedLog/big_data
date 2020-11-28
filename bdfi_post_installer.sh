@@ -4,7 +4,7 @@ cd ~/big_data
 ./resources/import_distances.sh
 
 k_list=$(docker exec kafka "opt/kafka/bin/kafka-topics.sh --list --zookeeper 172.23.0.6:2181" | grep "flight_delay_classification_request" | wc -l)
-if [  $k_list -eq  "1"]; then
+if [  $k_list -eq  "1" ]; then
     echo "Topic flight_delay_classification_request already created"
 else
     echo "Created topic: flight_delay_classification_request"
