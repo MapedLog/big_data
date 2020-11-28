@@ -24,7 +24,7 @@ else
     mkdir -p ~/big_data/data
 fi
 
-if [[ -f "~/big_data/data/simple_flight_delay_features.jsonl.bz2" && -f "~/big_data/data/origin_dest_distances.jsonl" && -f "~/big_data/models/sklearn_vectorizer.pkl" && -f "~/big_data/models/sklearn_regressor.pkl"]]; then
+if [[ -f "~/big_data/data/simple_flight_delay_features.jsonl.bz2" && -f "~/big_data/data/origin_dest_distances.jsonl" && -f "~/big_data/models/sklearn_vectorizer.pkl" && -f "~/big_data/models/sklearn_regressor.pkl" ]]; then
     echo "Data has already been download"
 else
     echo "Downloading Data"   
@@ -44,10 +44,10 @@ else
 fi
 
 #compile sbt
-if [-f "~/big_data/flight_prediction/target/scala-2.11/flight_prediction_2.11-0.1.jar"]
+if [-f "~/big_data/flight_prediction/target/scala-2.11/flight_prediction_2.11-0.1.jar"]; then
     cd ~/big_data/flight_prediction
     sbt compile
-    sbt run
+    sbt package
     cd ~
 fi
 
