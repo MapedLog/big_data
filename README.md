@@ -64,7 +64,7 @@ The following list includes some links with the installation procedure for each 
    cd ~/big_data
    python3.7 resources/train_spark_mllib_model.py .
   ```
-  Warning: To run this command and don't have error at the execution you should have installed all the Software required at the Installation and export the next environment varibles:
+  Warning: To run this command and don't have error at the execution you should have installed all the python libraries required at the requirements.txt
   ```
   pip3 install requirements.txt
   ```
