@@ -22,14 +22,14 @@ sh ./bdfi_container_init.sh
 You need to install each component included in the architecture. 
 The following list includes some links with the installation procedure for each component:
 
- - [Java] 1.8 JDK
- - [Python] 3.7
- - [PIP] 3
- - [SBT]
- - [MongoDB]
- - [Spark] 2.4.4
- - [Zookeeper]
- - [Kafka]  2.12-2.3.0
+ - Java 1.8 JDK
+ - Python 3.7
+ - PIP 3
+ - SBT
+ - MongoDB
+ - Spark 2.4.4
+ - Zookeeper
+ - Kafka  2.12-2.3.0
  
  ### Install python libraries
  
