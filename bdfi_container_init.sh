@@ -24,7 +24,7 @@ else
     mkdir -p ~/big_data/data
 fi
 
-if [ -f ~/big_data/data/simple_flight_delay_features.jsonl.bz2 ] && [ -f ~/big_data/data/origin_dest_distances.jsonl ] && [ -f ~/big_data/models/sklearn_vectorizer.pkl ] && [-f ~/big_data/models/sklearn_regressor.pkl ]; then
+if [ -f ~/big_data/data/simple_flight_delay_features.jsonl.bz2 ] && [ -f ~/big_data/data/origin_dest_distances.jsonl ] && [ -f ~/big_data/models/sklearn_vectorizer.pkl ] && [ -f ~/big_data/models/sklearn_regressor.pkl ]; then
     echo "Data has already been download"
 else
     echo "Downloading Data"   
