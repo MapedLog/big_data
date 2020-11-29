@@ -140,9 +140,9 @@ services:
         ipv4_address: 172.23.0.7
   flask:
     container_name: flask
-    image: flask:1.0
+    image: mapedlog/flask:1.0
     build:
-      context: ~/big_data/
+      context: .
       dockerfile: Dockerfile
     environment: 
       - 'PROJECT_HOME=/big_data'
@@ -169,6 +169,14 @@ services:
     networks:
       bdfi_network:
         ipv4_address: 172.23.0.11
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 400M
+        reservations:
+          cpus: '0.20'
+          memory: 10M
 
 networks:
   bdfi_network:
