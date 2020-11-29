@@ -92,7 +92,7 @@ bdfi_container_init.sh
   ### This project is enabled to run spark-submit with the JAR generated with SBT.
    Open a new console
   ```
-  docker exec spark-submit spark-submit --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 flight_prediction_2.11-0.1.jar
+  docker exec spark-submit spark-submit --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 /practica_big_data_2019/flight_prediction/target/scala-2.11/flight_prediction_2.11-0.1.jar
   ```
   Here, the script's functionality endes.
 ## Testing the full project
