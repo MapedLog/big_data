@@ -5,8 +5,8 @@ COPY requirements.txt /
 RUN pip install -r requirements.txt
 
 # Add requirements, code
-COPY big_data/resources/web/ /big_data/resources/web/
-COPY big_data/models/ /big_data/models/
+COPY ./resources/web/ /big_data/resources/web/
+COPY ./models/ /big_data/models/
 ENV PROJECT_HOME=/big_data
 # Declare and expose service listening port
 #EXPOSE 5000/tcp
