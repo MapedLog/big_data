@@ -141,9 +141,6 @@ services:
   flask:
     container_name: flask
     image: mapedlog/flask:1.0
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment: 
       - 'PROJECT_HOME=/big_data'
     networks:
