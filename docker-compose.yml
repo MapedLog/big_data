@@ -30,8 +30,16 @@ services:
         ipv4_address: 172.23.0.4    
     depends_on:
       - spark-master
-    ports:
-      - '8081:8081'
+    volumes:
+      - ~/big_data:/big_data
+  spark-worker-2:
+    image: bde2020/spark-worker:2.4.4-hadoop2.7
+    container_name: spark-worker-2
+    networks:
+      bdfi_network:
+        ipv4_address: 172.23.0.10    
+    depends_on:
+      - spark-master
     volumes:
       - ~/big_data:/big_data
     environment:
@@ -82,11 +90,21 @@ services:
       dockerfile: Dockerfile
     environment: 
       - 'PROJECT_HOME=/big_data'
-    ports:
-      - '5000:5000'
     networks:
       bdfi_network:
-        ipv4_address: 172.23.0.8    
+        ipv4_address: 172.23.0.8 
+  nginx:
+    container_name: nginx
+    image: bunkerity/bunkerized-nginx
+    environment: 
+      - 'USE_REVERSE_PROXY=yes'
+      - 'REVERSE_PROXY_URL=/'
+      - 'REVERSE_PROXY_HOST=http://172.23.0.8:5000'  
+    ports: 
+      - '80:5000'
+    networks:
+      bdfi_network:
+        ipv4_address: 172.23.0.11 
 networks:
   bdfi_network:
     driver: bridge
