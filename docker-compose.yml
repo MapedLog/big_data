@@ -26,7 +26,7 @@ services:
       - '8080:8080'
       - '7077:7077'
     volumes:
-      - ~/big_data:/big_data
+      - .:/big_data
     environment:
       - 'INIT_DAEMON_STEP=setup_spark'
       - 'constraint:node==<yourmasternode>'
@@ -47,7 +47,7 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ~/big_data:/big_data
+      - .:/big_data
     deploy:
       resources:
         limits:
@@ -65,7 +65,7 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ~/big_data:/big_data
+      - .:/big_data
     environment:
       - 'SPARK_MASTER=spark://spark-master:7077'
       - 'constraint:node==<yourworkernode>'
@@ -120,7 +120,7 @@ services:
     ports:
       - '4040:4040'
     volumes:
-      - ~/big_data:/big_data
+      - .:/big_data
     deploy:
       resources:
         limits:
