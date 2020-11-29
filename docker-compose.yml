@@ -140,7 +140,7 @@ services:
         ipv4_address: 172.23.0.7
   flask:
     container_name: flask
-    image: mapedlog/flask:1.1
+    image: mapedlog/flask:1.2
     environment:
       - 'PROJECT_HOME=/big_data'
     networks:
