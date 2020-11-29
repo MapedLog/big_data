@@ -141,7 +141,7 @@ services:
   flask:
     container_name: flask
     image: mapedlog/flask:1.0
-    environment: 
+    environment:
       - 'PROJECT_HOME=/big_data'
     networks:
       bdfi_network:
