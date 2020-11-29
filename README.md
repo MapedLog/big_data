@@ -86,7 +86,7 @@ bdfi_container_init.sh
   ```
   (Optional) You can open a new console with a consumer in order to see the messeges sent to that topic
   ```
- docker exec kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 172.23.0.2:9092 --topic flight_delay_classification_request --from-beginning
+ docker exec spark-submit spark-submit --deploy-mode cluster --master spark://spark-master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 /big_data/flight_prediction/target/scala-2.11/flight_prediction_2.11-0.1.jar
   ```
  
   ### This project is enabled to run spark-submit with the JAR generated with SBT.
