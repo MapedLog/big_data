@@ -17,7 +17,7 @@ export PROJECT_HOME=~/big_data
 #source /home/euskart/.profile
 
 ############################################# DATA DOWNLOAD ##########################################
-if [ -d "~/big_data/data" ]; then
+if [ -d ~/big_data/data ]; then
     echo "Data directory already exists"
 else
     echo "Data directory does not exists. Creating data"
