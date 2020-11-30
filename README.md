@@ -32,6 +32,8 @@ The following list includes in which image is installed and if it is needed in h
                               "zookeeper:3.6.2" docker image
  - Kafka  2.12-2.3.0 : included in 
                               "wurstmeister/kafka:2.12-2.3.0" docker image
+ - Nginx : included in 
+                              "bunkerity/bunkerized-nginx" docker image
  
 ## Initial steps
 
